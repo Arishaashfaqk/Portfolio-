@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodiak Group · Arisha · Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e10;
+    --cream: #f5f1ea;
+    --rust: #c0522a;
+    --gold: #c8993c;
+    --slate: #3a3d45;
+    --mist: #e8e4dc;
+    --line: rgba(14,14,16,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .hdr {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hdr::after {
+    content: 'KODIAK';
+    position: absolute;
+    right: -10px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: -6px;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content:''; width:28px; height:1px; background:var(--gold); display:inline-block; }
+  .hdr h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 60px);
+    line-height: 1.08; font-weight: 400;
+    max-width: 620px; margin-bottom: 20px;
+  }
+  .hdr h1 em { font-style: italic; color: var(--gold); }
+  .hdr-sub {
+    font-size: 14px; font-weight: 300;
+    color: rgba(245,241,234,0.6);
+    max-width: 440px; line-height: 1.75;
+    margin-bottom: 36px;
+  }
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 36px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(245,241,234,0.12);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700;
+    color: var(--cream); line-height: 1; display: block;
+  }
+  .stat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,241,234,0.4);
+    display: block; margin-top: 4px;
+  }
+
+  /* SECTIONS */
+  .sec { padding: 56px 48px; border-bottom: 1px solid var(--line); }
+  .sec-dark { background: var(--ink); color: var(--cream); }
+  .sec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust); margin-bottom: 10px;
+  }
+  .sec-dark .sec-label { color: var(--gold); }
+  .sec h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 400; margin-bottom: 36px; line-height: 1.2;
+  }
+  .sec-dark h2 { color: var(--cream); }
+
+  /* WORK CARDS */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .wcard { background: var(--cream); padding: 28px 24px; transition: background 0.2s; }
+  .wcard:hover { background: #ece8d8; }
+  .wcard-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 700;
+    color: var(--mist); line-height: 1; margin-bottom: 12px;
+  }
+  .wcard h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 400;
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .wcard p { font-size: 13px; line-height: 1.75; color: var(--slate); font-weight: 300; }
+
+  /* COMPANY TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 1px;
+    border: 1px solid rgba(245,241,234,0.2);
+    color: rgba(245,241,234,0.7);
+    padding: 6px 12px; border-radius: 2px;
+    transition: all 0.2s; cursor: default;
+  }
+  .tag:hover { border-color: var(--gold); color: var(--gold); background: rgba(200,153,60,0.08); }
+
+  /* EMAIL SAMPLES */
+  .email-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border: 1px solid var(--line);
+    margin-bottom: 16px;
+    background: var(--cream);
+  }
+  .email-meta {
+    background: var(--mist);
+    padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+    border-right: 1px solid var(--line);
+  }
+  .email-co {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--rust);
+  }
+  .email-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 400; line-height: 1.25;
+  }
+  .email-title { font-size: 12px; color: var(--slate); font-weight: 300; }
+  .angle-badge {
+    display: inline-block;
+    background: var(--ink); color: var(--cream);
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 9px; margin-top: 4px; width: fit-content;
+  }
+  .email-body {
+    padding: 24px 28px;
+    font-size: 13px; line-height: 1.8;
+    color: var(--slate); font-weight: 300;
+    position: relative;
+  }
+  .email-body::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    position: absolute; top: -14px; left: 10px;
+    color: var(--mist); line-height: 1; pointer-events: none;
+  }
+  .email-body p { position: relative; z-index: 1; }
+  .email-body p + p { margin-top: 10px; }
+
+  /* PROCESS */
+  .process-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    border: 1px solid var(--line);
+    gap: 1px; background: var(--line);
+  }
+  .pstep { background: var(--cream); padding: 28px 20px; }
+  .pstep-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--rust); margin-bottom: 12px;
+  }
+  .pstep h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 400; margin-bottom: 8px;
+  }
+  .pstep p { font-size: 12px; line-height: 1.7; color: var(--slate); font-weight: 300; }
+
+  /* STANDARDS */
+  .std-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .std-item { padding: 24px; border-left: 3px solid var(--rust); background: var(--mist); }
+  .std-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700; margin-bottom: 7px;
+  }
+  .std-item p { font-size: 12px; line-height: 1.7; color: var(--slate); font-weight: 300; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(245,241,234,0.4);
+    padding: 32px 48px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px;
+  }
+  footer span { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    .hdr, .sec, footer { padding-left: 20px; padding-right: 20px; }
+    .email-block { grid-template-columns: 1fr; }
+    .email-meta { border-right: none; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="eyebrow">Portfolio · Arisha · Kodiak Group</div>
+  <h1>B2B Sales Intelligence<br>&amp; <em>Outreach</em> at Scale</h1>
+  <p class="hdr-sub">Prospect research, contact intelligence, and personalised cold outreach for Kodiak Group — targeting VP to CRO level contacts across enterprise software.</p>
+  <div class="stats">
+    <div><span class="stat-num">300+</span><span class="stat-lbl">Contacts Researched</span></div>
+    <div><span class="stat-num">40+</span><span class="stat-lbl">Companies Targeted</span></div>
+    <div><span class="stat-num">3</span><span class="stat-lbl">Email Angles Used</span></div>
+    <div><span class="stat-num">VP–CRO</span><span class="stat-lbl">Seniority Level</span></div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">Scope of Work</div>
+  <h2>Six interconnected deliverables,<br>built to a consistent standard</h2>
+  <div class="work-grid">
+    <div class="wcard">
+      <div class="wcard-num">01</div>
+      <h3>Prospect Signal Research</h3>
+      <p>Reviewed LinkedIn activity, company announcements, product launches, and role changes to extract one high-value, recent, observable signal per contact.</p>
+    </div>
+    <div class="wcard">
+      <div class="wcard-num">02</div>
+      <h3>Pain Point Mapping</h3>
+      <p>Translated each signal into a peer-framed execution pain — categorised by Scale, Efficiency, Risk, Growth, or Budget — grounded in the contact's role and company moment.</p>
+    </div>
+    <div class="wcard">
+      <div class="wcard-num">03</div>
+      <h3>Contact Intelligence Tables</h3>
+      <p>Built structured Excel tables: signal summary, strength, pain point, category, business impact, fit score, send decision, email angle, and personalisation hook.</p>
+    </div>
+    <div class="wcard">
+      <div class="wcard-num">04</div>
+      <h3>Cold Email Drafting</h3>
+      <p>Wrote personalised outreach for every contact. Three-paragraph structure, signal-grounded opener, peer-framed pain, soft Kodiak CTA. No contractions, no em-dashes.</p>
+    </div>
+    <div class="wcard">
+      <div class="wcard-num">05</div>
+      <h3>Angle Assignment</h3>
+      <p>Each email assigned one of three angles — Insight, Validation, or Question — based on seniority, signal strength, and Kodiak's positioning fit.</p>
+    </div>
+    <div class="wcard">
+      <div class="wcard-num">06</div>
+      <h3>Quality Control & Iteration</h3>
+      <p>Refined openers, sharpened subject lines, reviewed every batch against Kodiak's tone benchmarks. Language always felt observed, not assumed.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec sec-dark">
+  <div class="sec-label">Target Accounts</div>
+  <h2>40+ enterprise companies researched</h2>
+  <div class="tags">
+    <span class="tag">Rubrik</span><span class="tag">Ivanti</span><span class="tag">Tungsten Automation</span><span class="tag">OneStream Software</span><span class="tag">Icertis</span><span class="tag">Vanta</span><span class="tag">Wind River</span><span class="tag">Aspen Technology</span><span class="tag">ConnectWise</span><span class="tag">Arcesium</span><span class="tag">BeyondTrust</span><span class="tag">NETSCOUT</span><span class="tag">SailPoint</span><span class="tag">Flexera</span><span class="tag">Druva</span><span class="tag">Guidewire Software</span><span class="tag">Bottomline</span><span class="tag">Certinia</span><span class="tag">Kaseya</span><span class="tag">HighRadius</span><span class="tag">Dynatrace</span><span class="tag">Axway</span><span class="tag">Riskonnect</span><span class="tag">JFrog</span><span class="tag">UiPath</span><span class="tag">Pegasystems</span><span class="tag">Perforce Software</span><span class="tag">Tricentis</span><span class="tag">Egnyte</span><span class="tag">Acrisure</span><span class="tag">Splunk</span><span class="tag">Nuvei</span><span class="tag">Imprivata</span><span class="tag">Fastly</span><span class="tag">SPS Commerce</span><span class="tag">Procore Technologies</span><span class="tag">Veeva Systems</span><span class="tag">Coupa Software</span><span class="tag">Signant Health</span><span class="tag">Qualtrics</span><span class="tag">WEX</span><span class="tag">UMB Bank</span><span class="tag">Pathward</span><span class="tag">Ansira</span><span class="tag">Snap Inc.</span><span class="tag">J.P. Morgan</span><span class="tag">Cvent</span><span class="tag">First American</span><span class="tag">Odessa</span><span class="tag">DFIN</span><span class="tag">HashiCorp</span><span class="tag">FICO</span><span class="tag">BlackBerry</span>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">Sample Work</div>
+  <h2>Personalised outreach emails — live examples</h2>
+
+  <div class="email-block">
+    <div class="email-meta">
+      <div class="email-co">Rubrik</div>
+      <div class="email-name">Ryan Baker</div>
+      <div class="email-title">VP of Sales</div>
+      <div class="angle-badge">Insight</div>
+    </div>
+    <div class="email-body">
+      <p>I've been seeing the shift towards cyber resilience as part of patient safety. That's a big move, especially when it means helping the team go beyond IT protection and talk about real impact in hospitals.</p>
+      <p>The challenging part is making sure that story doesn't fade once reps are in live conversations. At Kodiak, we work with teams to help that shift carry through in the field and stay consistent. Would you be open to a quick conversation to compare how you're approaching that?</p>
+    </div>
+  </div>
+
+  <div class="email-block">
+    <div class="email-meta">
+      <div class="email-co">OneStream</div>
+      <div class="email-name">Brenda Roper</div>
+      <div class="email-title">VP, Sales Enablement</div>
+      <div class="angle-badge">Validation</div>
+    </div>
+    <div class="email-body">
+      <p>I came across your SKO post and the way you spoke about the team really stood out. It felt thoughtful and intentional, not just another event on the calendar.</p>
+      <p>There's a lot of noise in the market about platforms being too complex — in my experience, it depends on how clearly the field can explain the value when they're actually in conversation with customers. That's a big part of what we focus on at Kodiak, helping teams keep the message simple, confident, and consistent when it matters most.</p>
+    </div>
+  </div>
+
+  <div class="email-block">
+    <div class="email-meta">
+      <div class="email-co">Icertis</div>
+      <div class="email-name">Nitin Khorana</div>
+      <div class="email-title">EVP, Head of Sales</div>
+      <div class="angle-badge">Validation</div>
+    </div>
+    <div class="email-body">
+      <p>I read about your fireside chat with David Thompson from SAP. The focus on AI moving from customer interest to actual execution is one I hear a lot right now and it is harder to solve than it looks.</p>
+      <p>There is strong partner engagement and customer interest, but when internal teams and partners tell the story in different ways, deals can slow down or drift toward a competitor who keeps it simpler. At Kodiak we help sales leaders align their teams and partners around one clear story so that engagement actually converts into momentum.</p>
+    </div>
+  </div>
+
+  <div class="email-block">
+    <div class="email-meta">
+      <div class="email-co">Fastly</div>
+      <div class="email-name">Kip Compton</div>
+      <div class="email-title">Chief Executive Officer</div>
+      <div class="angle-badge">Validation</div>
+    </div>
+    <div class="email-body">
+      <p>I was reading the Q4 update, and the way the team delivered record revenue and margins while keeping pricing stable says a lot about the discipline the Fastly team has brought to the turnaround.</p>
+      <p>Over the years, I've seen that at this stage operational progress often moves faster than the story reaching the market. At Kodiak, we work with CEOs to make sure the story behind the transformation carries clearly into customer conversations as the company moves back into growth.</p>
+    </div>
+  </div>
+
+  <div class="email-block">
+    <div class="email-meta">
+      <div class="email-co">UMB Bank</div>
+      <div class="email-name">Cynthia Simpson</div>
+      <div class="email-title">EVP, Marketing & Sales</div>
+      <div class="angle-badge">Insight</div>
+    </div>
+    <div class="email-body">
+      <p>It is great to see UMB investing in building out the communications function. It is evident that the team is serious about making sure the brand story holds up at every touchpoint.</p>
+      <p>In my experience, the hardest part is not the strategy itself. It is making sure the story built centrally actually shows up consistently when sales teams across corporate banking, fund services, and agribusiness are in front of clients. When each vertical finds its own language, the investment stops compounding the way it should.</p>
+    </div>
+  </div>
+
+  <div class="email-block">
+    <div class="email-meta">
+      <div class="email-co">BeyondTrust</div>
+      <div class="email-name">Brent Thurrell</div>
+      <div class="email-title">Chief Revenue Officer</div>
+      <div class="angle-badge">Insight</div>
+    </div>
+    <div class="email-body">
+      <p>I've been following how BeyondTrust continues reinforcing the trust narrative around privileged access. The way it ties security directly to business resilience stands out.</p>
+      <p>As teams grow, keeping that message steady across regions and reps can become just as important as the strategy itself. In complex security sales, it's easy for conversations to drift into product depth instead of staying grounded in executive priorities. We support CROs in turning strong positioning into repeatable field behaviour.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">How I Worked</div>
+  <h2>A repeatable 5-step process applied at scale</h2>
+  <div class="process-row">
+    <div class="pstep">
+      <div class="pstep-num">Step 01</div>
+      <h4>Signal Hunt</h4>
+      <p>Scanned LinkedIn, company posts, role changes, and launches for one recent, observable signal per contact.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">Step 02</div>
+      <h4>Pain Synthesis</h4>
+      <p>Translated the signal into the most likely execution-level pain, grounded in the contact's role and company moment.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">Step 03</div>
+      <h4>Angle Selection</h4>
+      <p>Assigned Insight, Validation, or Question based on seniority, signal strength, and Kodiak fit.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">Step 04</div>
+      <h4>Email Draft</h4>
+      <p>Three-paragraph structure: signal observation, peer-framed pain, Kodiak positioning with a soft specific CTA.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">Step 05</div>
+      <h4>Quality Pass</h4>
+      <p>Removed AI phrasing, generic openers, em-dashes, and filler. Every email reviewed against tone benchmarks.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">Craft Standards</div>
+  <h2>Non-negotiable rules applied to every email</h2>
+  <div class="std-grid">
+    <div class="std-item">
+      <h4>No Contractions</h4>
+      <p>Maintains a professional register appropriate for VP to CRO audiences throughout every email.</p>
+    </div>
+    <div class="std-item">
+      <h4>No Em-Dashes</h4>
+      <p>A Kodiak-specific tone marker. Prose kept clean and unambiguous when scanned quickly.</p>
+    </div>
+    <div class="std-item">
+      <h4>Signal-Grounded Openers</h4>
+      <p>Every opener references something recent and observable — a post, announcement, or promotion. Never generic praise.</p>
+    </div>
+    <div class="std-item">
+      <h4>Peer-Framed Pain</h4>
+      <p>Pain positioned as "in my experience" observations. The contact never feels criticised or talked down to.</p>
+    </div>
+    <div class="std-item">
+      <h4>Soft CTA</h4>
+      <p>"Compare notes" and "worth a quick conversation" — low-stakes language, not pushy calendar requests.</p>
+    </div>
+    <div class="std-item">
+      <h4>Human-Sounding Copy</h4>
+      <p>No buzzwords, no AI affirmations, no corporate filler. Reads like a smart peer wrote it.</p>
+    </div>
+    <div class="std-item">
+      <h4>Brief Kodiak Mention</h4>
+      <p>Kodiak appears once in paragraph three — a logical next step, never the focus of the email.</p>
+    </div>
+    <div class="std-item">
+      <h4>Specific Subject Lines</h4>
+      <p>Subject lines referencing the real context of the email. No manufactured urgency, no clickbait.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>Portfolio · <span>Kodiak Group</span> B2B Sales Intelligence</div>
+  <div>Arisha · 2025–2026</div>
+</footer>
+
+</body>
+</html>
